@@ -1,0 +1,67 @@
+﻿@model IEnumerable<sales.Common.Models.Product>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageFullPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PublishOn)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @if (!string.IsNullOrEmpty(item.ImagePath))
+            {
+                <img src="@Url.Content(item.ImageFullPath)" alt="Image" style="width:100px;height:150px;max-width: 100%; height: auto;" />
+            }
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PublishOn)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }, new {@class = "btn btn-warning" }) 
+            @Html.ActionLink("Details", "Details", new { id=item.ProductId }, new {@class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductId }, new {@class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

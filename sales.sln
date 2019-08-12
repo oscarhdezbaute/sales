@@ -134,6 +134,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		RESX_ExcelExportMode = SingleSheet
+		RESX_PrefixTranslations = False
 		SolutionGuid = {5C40A000-AB9E-4507-8BE2-BA81AFBEF2D8}
 	EndGlobalSection
 EndGlobal
