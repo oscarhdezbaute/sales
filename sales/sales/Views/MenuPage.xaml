@@ -8,23 +8,26 @@
          	Title="{i18n:Translate Menu}"
          	BackgroundColor="White">
     <ContentPage.Content>
-        <StackLayout Padding="5">
-            <controls:CircleImage  
-	            Source="{Binding UserImageFullPath}"
-	            Aspect="AspectFill"
-	            WidthRequest="200"
-	            HeightRequest="200">    
-            </controls:CircleImage>
-            <Label
-	            FontAttributes="Bold"
-	            FontSize="Large"
-	            HorizontalOptions="Center"
-	            Text="{Binding UserFullName}"
-	            TextColor="Black">      
-            </Label>
+        <StackLayout>
+            <StackLayout BackgroundColor="DodgerBlue" Padding="5">
+                <controls:CircleImage  
+	                Source="{Binding UserImageFullPath}"
+	                Aspect="AspectFill"
+	                WidthRequest="200"
+	                HeightRequest="200">    
+                </controls:CircleImage>
+                <Label
+	                FontAttributes="Bold"
+	                FontSize="Large"
+	                HorizontalOptions="Center"
+	                Text="{Binding UserFullName}"
+	                TextColor="White">
+                </Label>
+            </StackLayout>
             <ListView
+                BackgroundColor="Transparent"
             	ItemsSource="{Binding Menu}"
-                SeparatorVisibility="None"
+                SeparatorVisibility="Default"
             	HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>

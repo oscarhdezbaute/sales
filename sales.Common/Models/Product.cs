@@ -3,11 +3,18 @@
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Newtonsoft.Json;
 
     public class Product
     {
         [Key]
         public int ProductId { get; set; }
+
+        public int CategoryId { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string UserId { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -29,7 +36,7 @@
         [DataType(DataType.Date)]        
         public DateTime PublishOn { get; set; }
 
-        [NotMapped] //significa que lo voy a tener en el modelo, pero no se va a cear en la tabla de la bd
+        [NotMapped] //significa que lo voy a tener en el modelo, pero no se va a crear en la tabla de la bd
         public byte[] ImageArray { get; set; }
 
         [Display(Name = "Image")]
@@ -45,5 +52,8 @@
                 return $"http://172.24.0.1/Sales.API/{this.ImagePath.Substring(1)}";
             }
         }
+
+        [JsonIgnore]
+        public virtual Category Category { get; set; }
     }
 }

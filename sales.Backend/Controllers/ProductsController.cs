@@ -1,14 +1,13 @@
 ﻿namespace sales.Backend.Controllers
 {
-    using System;
+    using sales.Backend.Helpers;
+    using sales.Backend.Models;
+    using sales.Common.Models;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
     using System.Threading.Tasks;
     using System.Web.Mvc;
-    using sales.Backend.Helpers;
-    using sales.Backend.Models;
-    using sales.Common.Models;
 
     [Authorize]
     public class ProductsController : Controller

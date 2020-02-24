@@ -28,17 +28,20 @@
                     <Entry Placeholder="{i18n:Translate DescriptionPlaceholder}" Grid.Column="1" Grid.Row="0" Text="{Binding Product.Description}"/>
                     <Label Text="{i18n:Translate Price}" Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center"/>
                     <Entry Keyboard="Numeric" Placeholder="{i18n:Translate PricePlaceholder}" Grid.Column="1" Grid.Row="1" Text="{Binding Product.Price}"/>
-                    <Label Text="{i18n:Translate Remarks}" Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center"/>
-                    <Editor VerticalOptions="FillAndExpand" Grid.Column="1" Grid.Row="2" Text="{Binding Product.Remarks}"/>
-                    <Label Text="{i18n:Translate IsAvailable}" Grid.Column="0" Grid.Row="3" VerticalTextAlignment="Center"/>
-                    <Switch  Grid.Column="1" Grid.Row="3" HorizontalOptions="End" IsToggled="{Binding Product.IsAvailable}" />
+                    <Label Grid.Column="0" Grid.Row="2" Text="{i18n:Translate Category}" VerticalOptions="Center"/>
+                    <Picker Grid.Column="1" Grid.Row="2" ItemDisplayBinding="{Binding Description}" ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}"
+                            Title="{i18n:Translate CategoryPlaceholder}"/>
+                    <Label Grid.Column="0" Grid.Row="3" Text="{i18n:Translate Remarks}" VerticalOptions="Center"/>
+                    <Editor Grid.Column="1" Grid.Row="3" Text="{Binding Product.Remarks}" VerticalOptions="FillAndExpand"/>
+                    <Label Grid.Column="0" Grid.Row="4" Text="{i18n:Translate IsAvailable}" VerticalOptions="Center"/>
+                    <Switch Grid.Column="1" Grid.Row="4" HorizontalOptions="End" IsToggled="{Binding Product.IsAvailable}"/>
                 </Grid>
                 <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding IsRunning}"/>
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="{i18n:Translate Save}" TextColor="White" 
+                    <Button Text="{i18n:Translate Save}" TextColor="White" HeightRequest="46" BorderRadius="15"  
                             BackgroundColor="DodgerBlue" IsEnabled="{Binding IsEnabled}" 
                             Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"/>
-                    <Button Text="{i18n:Translate Delete}" TextColor="White" 
+                    <Button Text="{i18n:Translate Delete}" TextColor="White" HeightRequest="46" BorderRadius="15"  
                             BackgroundColor="Red" IsEnabled="{Binding IsEnabled}" 
                             Command="{Binding DeleteCommand}" HorizontalOptions="FillAndExpand"/>
                 </StackLayout>

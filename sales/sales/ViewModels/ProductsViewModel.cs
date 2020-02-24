@@ -2,15 +2,14 @@
 
 namespace sales.ViewModels
 {
-    using GalaSoft.MvvmLight.Command;
-    using sales.Common.Models;
-    using sales.Helpers;
-    using sales.Services;
-    using System;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
+    using sales.Common.Models;
+    using sales.Helpers;
+    using sales.Services;    
     using Xamarin.Forms;
 
     public class ProductsViewModel : BaseViewModel
@@ -20,7 +19,7 @@ namespace sales.ViewModels
         private DataService dataService;
         private bool isRefreshing;
         private ObservableCollection<ProductItemViewModel> products;
-        private string filter;
+        private string filter;        
         #endregion
 
         #region Properties
@@ -29,15 +28,12 @@ namespace sales.ViewModels
             get { return this.products; }
             set { this.SetValue(ref this.products, value); }
         }
-
         public bool IsRefreshing
         {
             get { return this.isRefreshing; }
             set { this.SetValue(ref this.isRefreshing, value); }
         }
-
         public List<Product> MyProducts { get; set; }
-
         public string Filter
         {
             get { return this.filter; }
@@ -47,12 +43,14 @@ namespace sales.ViewModels
                 this.RefreshList();
             }
         }
+        public Category Category { get; set; }
         #endregion
 
         #region Constructors
-        public ProductsViewModel()
+        public ProductsViewModel(Category category)
         {
             instance = this;
+            this.Category = category;
             this.apiService = new ApiService();
             this.dataService = new DataService();
             this.LoadProducts();
@@ -63,16 +61,33 @@ namespace sales.ViewModels
         private static ProductsViewModel instance;
         public static ProductsViewModel GetInstance()
         {
-            if (instance == null)
-            {
-                return new ProductsViewModel();
-            }
-            return instance;
+           return instance;
         }
         #endregion
 
         #region Methods
         private async void LoadProducts()
+        {
+            this.IsRefreshing = true;
+
+            var connection = await this.apiService.CheckConnection(false);
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
+                return;
+            }
+
+            var answer = await this.LoadProductsFromAPI();
+            if (answer)
+            {
+                this.RefreshList();
+            }
+
+            this.IsRefreshing = false;
+        }
+
+        /*private async void LoadProducts()
         {
             //this.IsRefreshing = true;
 
@@ -99,7 +114,7 @@ namespace sales.ViewModels
 
             this.RefreshList();            
             this.IsRefreshing = false;
-        }
+        }*/
 
         private async Task LoadProductsToDB()
         {
@@ -117,8 +132,7 @@ namespace sales.ViewModels
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();
             var controller = Application.Current.Resources["UrlProductsController"].ToString();
-            var response = await this.apiService.GetList<Product>(url, prefix, controller, Settings.TokenType, Settings.AccessToken);
-
+            var response = await this.apiService.GetList<Product>(url, prefix, controller, this.Category.CategoryId, Settings.TokenType, Settings.AccessToken);
             if (!response.IsSuccess)
             {
                 return false;
@@ -142,6 +156,8 @@ namespace sales.ViewModels
                     ProductId = p.ProductId,
                     PublishOn = p.PublishOn,
                     Remarks = p.Remarks,
+                    CategoryId = p.CategoryId,
+                    UserId = p.UserId,
                 });
 
                 this.Products = new ObservableCollection<ProductItemViewModel>(myListProductItemViewModel.OrderBy(p => p.Description));
@@ -158,6 +174,8 @@ namespace sales.ViewModels
                     ProductId = p.ProductId,
                     PublishOn = p.PublishOn,
                     Remarks = p.Remarks,
+                    CategoryId = p.CategoryId,
+                    UserId = p.UserId,
                 }).Where(p => p.Description.ToLower().Contains(this.Filter.ToLower())).ToList();
 
                 this.Products = new ObservableCollection<ProductItemViewModel>(myListProductItemViewModel.OrderBy(p => p.Description));

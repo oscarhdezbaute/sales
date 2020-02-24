@@ -126,8 +126,8 @@
                 Settings.UserASP = JsonConvert.SerializeObject(userASP);
             }
 
-            //como el usuario y la contraseña son válidos pongo como MainPage a la ProductPage
-            MainViewModel.GetInstance().Products = new ProductsViewModel();
+            //como el usuario y la contraseña son válidos pongo como MainPage a la CategoriesPage
+            MainViewModel.GetInstance().Categories = new CategoriesViewModel();
             Application.Current.MainPage = new MasterPage();
 
             this.IsRunning = false;

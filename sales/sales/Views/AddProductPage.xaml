@@ -28,11 +28,13 @@
                     <Entry Placeholder="{i18n:Translate DescriptionPlaceholder}" Grid.Column="1" Grid.Row="0" Text="{Binding Description}"/>
                     <Label Text="{i18n:Translate Price}" Grid.Column="0" Grid.Row="1" VerticalTextAlignment="Center"/>
                     <Entry Keyboard="Numeric" Placeholder="{i18n:Translate PricePlaceholder}" Grid.Column="1" Grid.Row="1" Text="{Binding Price}"/>
-                    <Label Text="{i18n:Translate Remarks}" Grid.Column="0" Grid.Row="2" VerticalTextAlignment="Center"/>
-                    <Editor VerticalOptions="FillAndExpand" Grid.Column="1" Grid.Row="2" Text="{Binding Remarks}"/>                    
+                    <Label Grid.Column="0" Grid.Row="2" Text="{i18n:Translate Category}" VerticalOptions="Center"/>
+                    <Picker Grid.Column="1" Grid.Row="2" ItemDisplayBinding="{Binding Description}" ItemsSource="{Binding Categories}" SelectedItem="{Binding Category}" Title="{i18n:Translate CategoryPlaceholder}"/>
+                    <Label Grid.Column="0" Grid.Row="3" Text="{i18n:Translate Remarks}" VerticalOptions="Center"/>
+                    <Editor Grid.Column="1" Grid.Row="3" Text="{Binding Remarks}" VerticalOptions="FillAndExpand"/>
                 </Grid>
                 <ActivityIndicator VerticalOptions="CenterAndExpand" IsRunning="{Binding IsRunning}"/>
-                <Button Text="{i18n:Translate Save}" TextColor="White" BackgroundColor="DodgerBlue" IsEnabled="{Binding IsEnabled}" Command="{Binding SaveCommand}"/>
+                <Button Text="{i18n:Translate Save}" HeightRequest="46" BorderRadius="15" TextColor="White" BackgroundColor="DodgerBlue" IsEnabled="{Binding IsEnabled}" Command="{Binding SaveCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

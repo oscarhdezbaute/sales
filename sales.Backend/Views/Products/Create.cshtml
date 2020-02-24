@@ -35,7 +35,8 @@
             @Html.LabelFor(model => model.ImageFile, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <span class="btn btn-default btn-file">
-                    @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file" })
+                    @*@Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file" })*@
+                    @Html.TextBoxFor(modelo => modelo.ImageFile, new { type = "file", htmlAttributes = new { @class = "form-control" } })
                 </span>
             </div>
         </div>

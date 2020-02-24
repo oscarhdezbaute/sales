@@ -81,7 +81,7 @@
                     VerticalOptions="CenterAndExpand">
                     <Button
                         BackgroundColor="DodgerBlue"
-                        BorderRadius="23"
+                        BorderRadius="15"
                         Command="{Binding LoginCommand}"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
@@ -91,7 +91,7 @@
                     </Button>
                     <Button
                         BackgroundColor="CadetBlue"
-                        BorderRadius="23"
+                        BorderRadius="15"
                         Command="{Binding RegisterCommand}"
                         HeightRequest="46"
                         HorizontalOptions="FillAndExpand"
