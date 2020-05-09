@@ -55,5 +55,9 @@
 
         [JsonIgnore]
         public virtual Category Category { get; set; }
+
+        public double Latitude { get; set; }
+
+        public double Logitude { get; set; }
     }
 }
