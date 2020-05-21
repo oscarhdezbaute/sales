@@ -58,6 +58,6 @@
 
         public double Latitude { get; set; }
 
-        public double Logitude { get; set; }
+        public double Longitude { get; set; }
     }
 }

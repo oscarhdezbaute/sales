@@ -201,6 +201,10 @@
         {
             get { return Resource.About; }
         }
+        public static string Map
+        {
+            get { return Resource.Map; }
+        }
 
         public static string Exit
         {

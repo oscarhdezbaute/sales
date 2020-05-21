@@ -96,6 +96,13 @@
 
             this.Menu.Add(new MenuItemViewModel
             {
+                Icon = "ic_map",
+                PageName = "MapPage",
+                Title = Languages.Map,
+            });
+
+            this.Menu.Add(new MenuItemViewModel
+            {
                 Icon = "ic_info",
                 PageName = "AboutPage",
                 Title = Languages.About,

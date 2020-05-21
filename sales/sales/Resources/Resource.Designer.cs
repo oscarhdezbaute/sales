@@ -277,7 +277,7 @@ namespace sales.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close session.
+        ///   Looks up a localized string similar to Logout.
         /// </summary>
         public static string Exit {
             get {
@@ -381,6 +381,15 @@ namespace sales.Resources {
         public static string Login {
             get {
                 return ResourceManager.GetString("Login", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map of products.
+        /// </summary>
+        public static string Map {
+            get {
+                return ResourceManager.GetString("Map", resourceCulture);
             }
         }
         

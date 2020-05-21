@@ -315,5 +315,7 @@
   <data name="CategoryError" xml:space="preserve">
     <value>Debes seleccionar una categoría.</value>
   </data>
-
+  <data name="Map" xml:space="preserve">
+    <value>Mapa de productos</value>
+  </data>
 </root>

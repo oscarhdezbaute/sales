@@ -244,7 +244,7 @@
     <value>Setup</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Close session</value>
+    <value>Logout</value>
   </data>
   <data name="NoProductsMessage" xml:space="preserve">
 	  <value>No products information available.</value>
@@ -315,5 +315,7 @@
   <data name="CategoryError" xml:space="preserve">
     <value>You must select a category.</value>
   </data>
-
+  <data name="Map" xml:space="preserve">
+    <value>Map of products</value>
+  </data>
 </root>
